@@ -1,0 +1,8 @@
+{
+  "operator": "OW",
+  "host_ip": "192.168.128.2",
+  "vm_sandbox_ip": "192.168.128.2",
+  "web_container_id": "ab657a6f314c",
+  "isolation_test": "PASSED",
+  "persistence_verified": true
+}
