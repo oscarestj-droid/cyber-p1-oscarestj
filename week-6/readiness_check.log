@@ -1,0 +1,16 @@
+==================================================
+SESSION 16: READINESS INVENTORY
+==================================================
+Operator: [Oscar Estudillo]
+Date: [04/15/2026]
+
+Confidence Audit (Yes/No):
+1. Nmap (Network Scanning): [Yes]
+2. Docker (Containerization): [No]
+3. Linux Hardening (UFW/chmod): [Yes]
+4. VS Code Remote-SSH: [Yes]
+
+Identify your weakest area and your plan to review it:
+[Type Answer Here]
+==================================================
+My weakest area is docker (Containerization) in running the correct commands to stop the containers and removing it. I also struggle with the law of white space which causes so many issues when i am  designing the network such as nano ~/docker-compose.yml. My plan is to continue working on labs that i have completed and try to complete with less help.
