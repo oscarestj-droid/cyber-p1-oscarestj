@@ -52,6 +52,24 @@ Conducted dynamic analysis of a suspicious executable within an air-gapped conta
 * **Forensics**: Dynamic analysis reporting and environmental isolation. 
 
 --- 
+## 🛡️ Week 6: The Hardened Outpost (Infrastructure Security)
+
+### 🏗️ Security Architecture Document (SAD)
+Detailed analysis can be found in: [`week6/HardenedOutpost_SAD.md`](./week6/HardenedOutpost_SAD.md)
+
+**Key Security Principles Implemented:**
+* **Defense in Depth:** Layered security starting from the host OS (UFW/SSH hardening) down to the containerized application.
+* **Principle of Least Privilege:** The MySQL database is strictly confined to a private backend network with no external port mapping.
+* **Segregated Networking:** * `frontend-nw`: Connects the user to the WordPress DMZ.
+  * `backend-nw`: An isolated "Dark Net" for internal database traffic only.
+
+### 🛠️ Technical Stack & Tools
+* **Orchestration:** Docker Compose
+* **Hardening:** UFW (Uncomplicated Firewall), SSH Key-Auth, Configured `.env` secrets.
+* **Auditing:** Custom Python Connectivity Auditor (`dc_auditor.py`)
+
+### 📊 Deployment Diagram
+The architecture follows a classic **Two-Tier DMZ pattern**, ensuring that a compromise of the web server does not lead to an immediate database breach. 
 ## Week 7: Network Discovery and Strategic Triage
 
 ### 🔍 Project Overview
