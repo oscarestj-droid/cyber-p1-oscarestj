@@ -6,3 +6,4 @@
 * **Cross-Site Request Forgery (CSRF):** Crafted a malicious image-based URL to simulate unauthorized state-changing requests.
 * **Defensive Mechanisms:** Documented the implementation of **Anti-CSRF Tokens** and the difference between Reflected and Stored XSS
 * **API Security Testing:** Utilized **Burp Suite** to intercept, log, and audit backend API endpoints for broken object-level authorization (BOLA) and improper asset management.
+* **Broken Object Level Authorization (BOLA):** Exploited insecure direct object references by enumerating Order IDs to access unauthorized server lease data. Defended by proposing session-to-object ownership validation and implementation of non-enumerable UUIDs.
