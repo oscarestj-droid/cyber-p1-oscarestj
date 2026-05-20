@@ -39,3 +39,19 @@ By evaluating strings extracted directly from the raw memory image (`memdump.raw
 Using the filesystem utility `fls`, a recursive sweep of the storage drive image (`compromised_drive.dd`) was executed to locate entries flagged as unallocated (deleted).
 ```bash
 fls -r compromised_drive.dd
+# TitanCorp Incident Response: The Central Nervous System (SIEM Correlation)
+
+## 🗺️ Mission Scenario
+An Advanced Persistent Threat (APT) actor successfully compromised the TitanCorp enterprise network, escalated privileges to Domain Admin, and moved laterally across multiple internal systems before exfiltrating critical corporate data. Investigating this breach across thousands of scattered log files would be impossible manually. 
+
+As the Incident Responder, this repository documents the utilization of the SIEM (Kibana) as a central brain to aggregate, filter, and correlate disparate telemetry from Web Servers, Windows Security event logs, and Network Firewalls. By tracking attacker footprints across shared IP addresses and tight timestamp windows, the complete network kill chain was successfully reconstructed.
+
+---
+
+## ⚙️ Phase 1 — The Micro-Lab: "Kibana Search"
+**Objective:** Search aggregated log indexes to isolate the initial Indicator of Compromise (IoC).
+
+Using the Kibana **Discover** interface against the `enterprise_logs*` index, a query was built to isolate authentication failures across the perimeter.
+
+* **SIEM Search Query:** ```text
+  event_type: "Failed Login"
