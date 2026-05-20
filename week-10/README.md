@@ -55,3 +55,31 @@ Using the Kibana **Discover** interface against the `enterprise_logs*` index, a 
 
 * **SIEM Search Query:** ```text
   event_type: "Failed Login"
+# TitanCorp Enterprise Incident Response: Operation Phantom Pursuit
+
+## 🗺️ Mission Overview
+Operation Phantom Pursuit simulates a comprehensive, end-to-end breach lifecycle investigation within the TitanCorp enterprise network. Rather than looking at security milestones in isolation, this engagement requires navigating the complete defense pipeline: correlating decentralized SIEM alerts, performing volatile live triage on a compromised container, establishing a cryptographic Chain of Custody, and executing a low-level disk autopsy to carve out hidden malware.
+
+This repository serves as the official central registry for the threat intelligence and forensic artifacts recovered during the investigation.
+
+---
+
+## ⚙️ Phase 1 — SIEM Correlation: "The Alert"
+**Objective:** Identify and document the initial perimeter vector of the threat actor.
+
+Using the centralized SIEM interface (Kibana) to parse the aggregated `enterprise_logs*` index, a sweep was performed to isolate high-severity system signals. A cluster of malicious ingestion spikes flagged a critical perimeter event.
+
+* **Search Telemetry:** `Critical Alert`
+* **Discovered Threat Vector (Attacker Source IP):** `198.51.100.44`
+* **Analysis:** The external IP address was tracked making unauthorized ingress attempts, confirming the threat actor's initial point of network presence.
+
+---
+
+## ⚙️ Phase 2 — Live Triage & Chain of Custody
+**Objective:** Contain the volatile host environment, profile the active compromise, and seal the physical evidence.
+
+### 1. Volatile Memory Inspection
+An interactive TTY session was established into the quarantined environment (`quarantined_host`) to collect highly volatile network socket states before they faded from RAM.
+```bash
+docker exec -it quarantined_host /bin/sh
+netstat -antp
