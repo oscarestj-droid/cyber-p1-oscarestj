@@ -1,0 +1,4 @@
+Timestamp,Source IP,Event Type,Action,Description
+[April 30, 2026 @ 06:15:00.000],[198.51.100.44],[web server],Initial Access,[Threat actor successfully uploaded and executed an malicious payload]
+[April 30, 2026 @ 06:25:00.000],[10.0.5.15],[windows security],Lateral Movement,[Threat actor was able to escalate to domain admin]
+[April 30, 2026 @ 06:45:00.000],[198.51.100.42],[firewall],Exfiltration,[Threat actor was able to successfully exported 4.5 GB over port 443]
