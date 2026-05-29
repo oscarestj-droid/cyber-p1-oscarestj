@@ -33,3 +33,23 @@ Attackers often scan subnets using ICMP echoes to identify active targets. A sig
 * **Engineered Signature Rule:**
   ```text
   alert icmp any any -> 172.90.0.10 any (msg:"ICMP Ping Detected"; sid:1000001; rev:1;)
+# Operation Fortress: Three-Layer Defense in Depth Architecture
+
+## 🗺️ Threat Intelligence Scenario
+An active adversary is currently targeting our core infrastructure. Threat intelligence has mapped out their tactics, techniques, and procedures (TTPs) down to three specific actions:
+1. **Command & Control (C2):** They utilize the `198.51.100.0/24` subnet for malicious outbound callbacks.
+2. **Perimeter Exploitation:** They interact with web servers using a specialized `cmd=whoami` web shell vector to establish a foothold.
+3. **Post-Exploitation:** Once inside, they execute automated download commands targeting a malicious delivery server at `curl http://198.51.100.5`.
+
+To ensure system resilience, a multi-tiered **Defense in Depth** model was engineered. If any single component drops or fails to parse a packet, the next consecutive security controls act as an immediate failsafe.
+
+---
+
+## 🛡️ Layer 1: Network Perimeter Isolation (iptables)
+**Objective:** Hard-sever all outbound infrastructure communications attempting to communicate with the adversary's C2 subnet.
+
+By applying an explicit rule to the outbound kernel chain, the system drops traffic destined for the malicious network long before any payload can be transferred.
+
+* **Engineered Automation Rule (`firewall_task.sh`):**
+  ```bash
+  iptables -A OUTPUT -d 198.51.100.0/24 -j DROP
